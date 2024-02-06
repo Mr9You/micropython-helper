@@ -79,12 +79,12 @@
 #define MP_TASK_STACK_LIMIT_MARGIN (1024)
 #endif
 
-int vprintf_null(const char *format, va_list ap) {
+static int vprintf_null(const char *format, va_list ap) {
     // do nothing: this is used as a log target during raw repl mode
     return 0;
 }
 
-time_t platform_mbedtls_time(time_t *timer) {
+static time_t platform_mbedtls_time(time_t *timer) {
     // mbedtls_time requires time in seconds from EPOCH 1970
 
     struct timeval tv;
@@ -93,7 +93,7 @@ time_t platform_mbedtls_time(time_t *timer) {
     return tv.tv_sec + TIMEUTILS_SECONDS_1970_TO_2000;
 }
 
-void mp_task(void *pvParameter) {
+static void mp_task(void *pvParameter) {
     volatile uint32_t sp = (uint32_t)esp_cpu_get_sp();
     #if MICROPY_PY_THREAD
     mp_thread_init(pxTaskGetStackStart(NULL), MICROPY_TASK_STACK_SIZE / sizeof(uintptr_t));
@@ -215,7 +215,7 @@ void boardctrl_startup(void) {
     }
 }
 
-void app_main(void) {
+void mpy_startup(void) {
     // Hook for a board to run code at start up.
     // This defaults to initialising NVS.
     MICROPY_BOARD_STARTUP();
