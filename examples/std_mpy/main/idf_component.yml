@@ -1,0 +1,5 @@
+dependencies:
+  idf: ">=5.0"
+  mr9you/micropython-helper:
+    version: "~1.22.1"
+    override_path: "../../../"
