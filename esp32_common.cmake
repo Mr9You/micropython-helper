@@ -151,6 +151,7 @@ idf_component_register(
         ${MICROPY_PORT_DIR}
         ${MICROPY_BOARD_DIR}
         ${CMAKE_BINARY_DIR}
+        include
     REQUIRES
         ${IDF_COMPONENTS}
 )
