@@ -1,0 +1,18 @@
+version: "1.22.1"
+description: This component helps to use MicroPython as an ESP-IDF component.
+targets:
+  - esp32
+  - esp32c3
+  - esp32s2
+  - esp32s3
+url: https://github.com/mr9you/micropython-helper.git
+repository: https://github.com/mr9you/micropython-helper
+issues: https://github.com/mr9you/micropython-helper/issues
+dependencies:
+  espressif/mdns: "~1.1.0"
+  espressif/esp_tinyusb:
+    version: "~1.0.0"
+    rules:
+      - if: "target in [esp32s2, esp32s3]"
+  idf:
+    version: ">=5.0.4"
